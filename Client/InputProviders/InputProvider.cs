@@ -4,6 +4,7 @@
     using Client.Contracts;
     using Renderers;
     using Constants;
+    using Services;
 
     class InputProvider : IInputProvider
     {
@@ -20,23 +21,15 @@
         public void ParseMenuCommand(string command)
         {
             IRenderer renderer = new Renderer();
-            switch (command)
+
+            MenuHandler menuHandler = new MenuHandler();
+            try
             {
-                case "1":
-                    renderer.Index();
-                    break;
-                case "2":
-                    renderer.Search();
-                    break;
-                case "3":
-                    renderer.Add();
-                    break;
-                case "0":
-                    renderer.RenderMainMenu();
-                    break;
-                default:
-                    renderer.PrintErrorMessage(ErrorMessages.CommandNotFoundError);
-                    break;
+                menuHandler.Call(int.Parse(command));
+            }
+            catch (FormatException)
+            {
+                this.ReadMenuCommand();
             }
         }
 

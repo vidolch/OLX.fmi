@@ -1,7 +1,7 @@
 ﻿namespace Client.Models
 {
     using System;
-    class Product
+    public class Product
     {
         private string name;
         private double price;

@@ -7,8 +7,9 @@
     using Client.Models;
     using InputProviders;
     using Constants;
+    using Services;
 
-    class Renderer : IRenderer
+    public class Renderer : IRenderer
     {
         public void Add()
         {
@@ -28,8 +29,7 @@
 
             requestHandler.Add(name, price);
             Console.WriteLine("Your entry was successfully added!");
-            Console.WriteLine(Environment.NewLine);
-            Console.WriteLine("0) to back in Main menu.");
+            this.RenderBackCommand();
         }
 
         private double ParsePrice(IInputProvider inputProvider)
@@ -69,13 +69,18 @@
 
         public void RenderMainMenu()
         {
-            string menu = "1) List all products;" + Environment.NewLine;
-            menu += "2) Search for products;" + Environment.NewLine;
-            menu += "3) Add new product;" + Environment.NewLine;
+            MenuHandler menuHandler = new MenuHandler();
+
+            string menuString = "";
+            IList<MenuItem> menuItemList = menuHandler.GetMenuItemList();
+            foreach (MenuItem item in menuItemList)
+            {
+                menuString += item.Activator + ") " + item.Text + Environment.NewLine;
+            }
 
             Console.Clear();
 
-            Console.WriteLine(menu);
+            Console.WriteLine(menuString);
         }
 
         public void Search()
@@ -105,11 +110,19 @@
             }
 
             Console.WriteLine(text);
-            Console.WriteLine(Environment.NewLine);
-            Console.WriteLine("0) to back in Main menu.");
+            this.RenderBackCommand();
 
             IInputProvider inputProvider = new InputProvider();
             inputProvider.ReadMenuCommand();
+        }
+
+        private void RenderBackCommand()
+        {
+            MenuHandler menuHandler = new MenuHandler();
+            MenuItem backCommand = menuHandler.GetBackCommand();
+
+            Console.WriteLine(Environment.NewLine);
+            Console.WriteLine("{0}) {1}", backCommand.Activator, backCommand.Text);
         }
     }
 }

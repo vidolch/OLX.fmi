@@ -45,20 +45,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants\ErrorMessages.cs" />
+    <Compile Include="Constants\Menus.cs" />
     <Compile Include="Contracts\IInputProvider.cs" />
+    <Compile Include="Contracts\IMenu.cs" />
+    <Compile Include="Contracts\IMenuItem.cs" />
     <Compile Include="Contracts\IRenderer.cs" />
     <Compile Include="Contracts\IRequestHandler.cs" />
     <Compile Include="Entry.cs" />
     <Compile Include="InputProviders\InputProvider.cs" />
+    <Compile Include="Models\Menu.cs" />
+    <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderers\Renderer.cs" />
     <Compile Include="Requests\RequestHandler.cs" />
     <Compile Include="Services\JsonParser.cs" />
+    <Compile Include="Services\MenuHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Backend\Backend.csproj">
