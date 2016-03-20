@@ -39,5 +39,34 @@
             productController.Add(product);
 
         }
+
+        public bool Remove(string productName)
+        {
+            ProductController productController = new ProductController();
+
+            bool delete = productController.Remove(productName);
+
+            return delete;
+        }
+
+        public string Show(string entry)
+        {
+            ProductController productController = new ProductController();
+
+            var json = new JsonParser<Product>();
+
+            string result = json.ToJson(productController.Show(entry));
+
+            return result;
+        }
+
+        public bool Update(string entry)
+        {
+            ProductController productController = new ProductController();
+
+            bool update = productController.Update(entry);
+
+            return update;
+        }
     }
 }

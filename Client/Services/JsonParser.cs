@@ -6,20 +6,27 @@
     using System.Web.Script.Serialization;
     using System;
 
-    class JsonParser
+    class JsonParser<T>
     {
-        public List<Product> ToProductList(string json)
+        public List<T> ToObjectList(string json)
         {
-            List<Product> products = new JavaScriptSerializer().Deserialize<List<Product>>(json);
+            List<T> products = new JavaScriptSerializer().Deserialize<List<T>>(json);
 
             return products;
         }
 
-        public string ToJson(Product newProduct)
+        public string ToJson(T newT)
         {
-            string json = new JavaScriptSerializer().Serialize(newProduct);
+            string json = new JavaScriptSerializer().Serialize(newT);
 
             return json;
+        }
+
+        internal T ToObject(string json)
+        {
+            T item = new JavaScriptSerializer().Deserialize<T>(json);
+
+            return item;
         }
     }
 }

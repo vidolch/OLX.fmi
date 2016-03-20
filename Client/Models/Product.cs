@@ -6,16 +6,18 @@
         private string name;
         private double price;
         private DateTime date;
+        private ulong id;
 
         public Product()
         {
 
         }
 
-        public Product(string name, double price)
+        public Product(string name, double price, ulong id = 0)
         {
             this.Name = name;
             this.Price = price;
+            this.Id = id;
         }
 
         public string Name
@@ -34,5 +36,12 @@
             get { return date; }
             set { date = value; }
         }
+
+        public ulong Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
     }
 }

@@ -6,7 +6,8 @@
                 { "List all products;",       "Client.Renderers@Renderer@Index" },
                 { "Search for products;",     "Client.Renderers@Renderer@Search" },
                 { "Add new product;",         "Client.Renderers@Renderer@Add" },
-                { "Delete existing product;", "Client.Renderers@Renderer@RenderMainMenu" },
+                { "Delete existing product;", "Client.Renderers@Renderer@Remove" },
+                { "Update existing product;", "Client.Renderers@Renderer@Update" },
 
                 // Last one is reserved for back command
                 { "Back to main menu;", "Client.Renderers@Renderer@RenderMainMenu" }

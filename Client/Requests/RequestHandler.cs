@@ -12,7 +12,7 @@
         {
             Product newProduct = new Product(name, price);
 
-            var json = new JsonParser();
+            var json = new JsonParser<Product>();
 
             string jsonString = json.ToJson(newProduct);
 
@@ -25,22 +25,55 @@
         {
             var request = new Backend.Requests.RequestHandler();
 
-            var parser = new JsonParser();
+            var parser = new JsonParser<Product>();
 
-            var products = parser.ToProductList(request.Index());
+            var products = parser.ToObjectList(request.Index());
 
             return products;
+        }
+
+        public bool Remove(string input)
+        {
+            var request = new Backend.Requests.RequestHandler();
+
+            bool delete = request.Remove(input);
+
+            return delete;
         }
 
         public List<Product> Search(string input)
         {
             var request = new Backend.Requests.RequestHandler();
 
-            var parser = new JsonParser();
+            var parser = new JsonParser<Product>();
 
-            var products = parser.ToProductList(request.Search(input));
+            var products = parser.ToObjectList(request.Search(input));
 
             return products;
+        }
+
+        public Product Show(string input)
+        {
+            var request = new Backend.Requests.RequestHandler();
+
+            var parser = new JsonParser<Product>();
+
+            var product = parser.ToObject(request.Show(input));
+
+            return product;
+        }
+
+        public bool Update(string newName, double newPrice, ulong Id)
+        {
+            Product item = new Product(newName, newPrice, Id);
+
+            var json = new JsonParser<Product>();
+
+            var request = new Backend.Requests.RequestHandler();
+
+            bool updated = request.Update(json.ToJson(item));
+
+            return updated;
         }
     }
 }

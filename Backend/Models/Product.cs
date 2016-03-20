@@ -9,21 +9,28 @@
         private string name;
         private double price;
         private DateTime date;
-        private int id;
+        private ulong id;
 
         public Product()
         {
             
         }
-        public Product(string name, double price)
+        public Product(string name, double price, ulong id = 0)
         {
             this.Name = name;
             this.Price = price;
             this.Date = DateTime.Now;
 
             Random random = new Random();
-
-            this.Id = random.Next(0, int.MaxValue);
+            if(id != 0)
+            {
+                this.Id = Convert.ToUInt64(random.Next(1, int.MaxValue));
+            }
+            else
+            {
+                this.Id = id;
+            }
+            
         }
 
         public string Name
@@ -44,7 +51,7 @@
             set { date = value; }
         }
         
-        public int Id
+        public ulong Id
         {
             get { return id; }
             set { id = value; }

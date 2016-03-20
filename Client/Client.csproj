@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Constants\ErrorMessages.cs" />
     <Compile Include="Constants\Menus.cs" />
+    <Compile Include="Constants\SuccessMessages.cs" />
     <Compile Include="Contracts\IInputProvider.cs" />
     <Compile Include="Contracts\IMenu.cs" />
     <Compile Include="Contracts\IMenuItem.cs" />

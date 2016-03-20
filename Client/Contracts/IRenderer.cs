@@ -7,5 +7,6 @@
         void Index();
         void Search();
         void Add();
+        void Update();
     }
 }
